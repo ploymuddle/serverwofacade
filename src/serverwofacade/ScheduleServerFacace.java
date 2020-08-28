@@ -3,31 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package serverwofacade;
-public class ServerWOFacade {
-    public static void main(String[] args) {
-//        ScheduleServerFacace server = new ScheduleServerFacace();
-        ScheduleServer scheduleServer = new ScheduleServer();
-        
-	scheduleServer.startBooting();
+
+/**
+ *
+ * @author PLOYMUDDLE
+ */
+public class ScheduleServerFacace {
+    private final ScheduleServer scheduleServer;
+    public ScheduleServerFacace(){
+        scheduleServer = new ScheduleServer();
+    }
+    
+    public void startServer(){
+        scheduleServer.startBooting();
 	scheduleServer.readSystemConfigFile();
 	scheduleServer.init();
 	scheduleServer.initializeContext();
 	scheduleServer.initializeListeners();
 	scheduleServer.createSystemObjects();
-
-//        server.startServer();
-	System.out.println("Start working......");
-	System.out.println("After work done.........");
-//        server.stopServer();
-        
-	scheduleServer.releaseProcesses();
+    }
+    
+    public void stopServer(){
+        scheduleServer.releaseProcesses();
 	scheduleServer.destory();
 	scheduleServer.destroySystemObjects();
 	scheduleServer.destoryListeners();
 	scheduleServer.destoryContext();
 	scheduleServer.shutdown();
     }
-    
 }
